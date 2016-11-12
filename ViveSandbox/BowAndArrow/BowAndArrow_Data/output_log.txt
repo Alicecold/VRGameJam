@@ -1,0 +1,32 @@
+Initialize engine version: 5.3.4f1 (fdbb5133b820)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 650 (ID=0xfc6)
+    Vendor:   NVIDIA
+    VRAM:     994 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: \\semalfil03\Share\ViveSandbox\BowAndArrow\BowAndArrow_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading \\semalfil03\Share\ViveSandbox\BowAndArrow\BowAndArrow_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: \\semalfil03\Share\ViveSandbox\BowAndArrow\BowAndArrow_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading \\semalfil03\Share\ViveSandbox\BowAndArrow\BowAndArrow_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: \\semalfil03\Share\ViveSandbox\BowAndArrow\BowAndArrow_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading \\semalfil03\Share\ViveSandbox\BowAndArrow\BowAndArrow_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: \\semalfil03\Share\ViveSandbox\BowAndArrow\BowAndArrow_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading \\semalfil03\Share\ViveSandbox\BowAndArrow\BowAndArrow_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: \\semalfil03\Share\ViveSandbox\BowAndArrow\BowAndArrow_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading \\semalfil03\Share\ViveSandbox\BowAndArrow\BowAndArrow_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.872 seconds
+Platform assembly: \\semalfil03\Share\ViveSandbox\BowAndArrow\BowAndArrow_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: \\semalfil03\Share\ViveSandbox\BowAndArrow\BowAndArrow_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
+<RI> Initialized touch support.
+UnloadTime: 5.065411 ms
+Installation path could not be located (110)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 2e58 -> priority: 1 

@@ -1,0 +1,4 @@
+sceneSetups:
+- path: C:/Users/stadsi1/Documents/gruppElva/Assets/TGAJAM11.unity
+  isLoaded: 1
+  isActive: 1
