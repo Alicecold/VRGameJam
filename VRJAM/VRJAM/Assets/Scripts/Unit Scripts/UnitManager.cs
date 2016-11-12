@@ -21,6 +21,13 @@ public class UnitManager : MonoBehaviour
 
     }
 
+    Vector3 YAxisLock (Vector3 aVector)
+    {
+        Vector3 postion = aVector;
+        postion.y = 0;
+        return postion;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -32,7 +39,9 @@ public class UnitManager : MonoBehaviour
             }
             else
             {
-                Vector3 direction = Vector3.Lerp(transform.position, myDestination, Time.deltaTime * myMovementSpeed);
+                
+                Vector3 direction = Vector3.Lerp(transform.position, myDestination, Time.fixedDeltaTime * myMovementSpeed);
+                direction.y = 0;
                 transform.position = direction;
                 Vector3 lookPos = myDestination - transform.position;
                 lookPos.y = 0;
@@ -42,7 +51,7 @@ public class UnitManager : MonoBehaviour
         }
         else if (!myIsMoving)
         {
-            GameObject targetArea = GameObject.Find("PeasantTarget");
+            GameObject targetArea = GameObject.Find("Target");
             if ((myDestination - transform.position).magnitude > 1)
             {
                 myIsMoving = true;
