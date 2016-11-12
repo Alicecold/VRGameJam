@@ -33,12 +33,12 @@ public class GroupManager : MonoBehaviour {
         }
         else
         {
-            Vector3 direction = Vector3.Lerp(transform.position, myDestination, Time.fixedDeltaTime * myMovementSpeed);
+            Vector3 direction = Vector3.MoveTowards(transform.position, myDestination, Time.fixedDeltaTime * myMovementSpeed);
             transform.position = direction;
             Vector3 lookPos = myDestination - transform.position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * myDamping);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.deltaTime * myDamping);
         }
     }
 }

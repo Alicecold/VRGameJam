@@ -17,7 +17,7 @@ public class UnitManager : MonoBehaviour
     void Start()
     {
         GroupManager InitSettings = transform.parent.gameObject.GetComponent<GroupManager>();
-        myMovementSpeed = InitSettings.myMovementSpeed - 0.01f;
+        myMovementSpeed = InitSettings.myMovementSpeed / 3;
         myDamping = InitSettings.myDamping;
         myUnitID = InitSettings.myUnitID;
         myHealth = InitSettings.myHealth;
@@ -32,18 +32,18 @@ public class UnitManager : MonoBehaviour
         GameObject myParent = transform.parent.gameObject;
         myDestination = myParent.transform.position;
         myDestination.y = 0;
-        if ((myDestination - transform.position).magnitude < .3)
+        if ((myDestination - transform.position).magnitude < 1)
         {
             myIsMoving = false;
         }
         else
         {
-            Vector3 direction = Vector3.Lerp(transform.position, myDestination, Time.fixedDeltaTime * myMovementSpeed);
+            Vector3 direction = Vector3.MoveTowards(transform.position, myDestination, Time.fixedDeltaTime * myMovementSpeed);
             transform.position = direction;
             Vector3 lookPos = myDestination - transform.position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * myDamping);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.deltaTime * myDamping);
         }
     }
 }
