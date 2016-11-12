@@ -9,6 +9,7 @@ public class GroupManager : MonoBehaviour {
     public int myHealth;
     public int myDamage;
     public float myAttackRange;
+    public GameObject myTarget;
 
     public bool myTeam; // True = white, false = black
 
@@ -23,8 +24,8 @@ public class GroupManager : MonoBehaviour {
 
 	void Update ()
     {
-        GameObject targetArea = GameObject.Find("Target");
-        myDestination = targetArea.transform.position;
+        
+        myDestination = myTarget.transform.position;
         myDestination.y = 0;
         if ((myDestination - transform.position).magnitude < 1)
         {
