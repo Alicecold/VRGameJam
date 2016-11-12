@@ -3,11 +3,11 @@ using System.Collections;
 
 public class UnitStats : MonoBehaviour
 {
-    int myUnitID;
-    int myHealth;
-    int mySpeed;
-    int myDamage;
-    bool myIsRanged;
+    public int myUnitID;
+    public int myHealth;
+    public int mySpeed;
+    public int myDamage;
+    public bool myIsRanged;
 
     void start()
     {
