@@ -3,6 +3,7 @@ using System.Collections;
 
 public class UnitManager : MonoBehaviour
 {
+    public GameObject myTargetArea;
 
     public float myMovementSpeed;
     public float myDamping;
@@ -24,13 +25,7 @@ public class UnitManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ()
-        {
-
-        }
-
-        GameObject targetArea = GameObject.Find("Target");
-        myDestination = targetArea.transform.position;
+        myDestination = myTargetArea.transform.position;
         myDestination.y = 0;
         if ((myDestination - transform.position).magnitude < 1)
         {
