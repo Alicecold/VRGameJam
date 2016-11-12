@@ -30,3 +30,4 @@ sysinfo.txt
 *.unitypackage
 *.dwlt
 VRJAM/VRJAM/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+VRJAM/VRJAM/Temp/UnityLockfile
