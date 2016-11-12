@@ -18,5 +18,13 @@ public class VRSettingsScript : MonoBehaviour {
             VRSettings.enabled = !VRSettings.enabled;
             Debug.Log("Changed VRSettings.enabled to:" + VRSettings.enabled);
         }
+
+        for (int i = 0; i < 16; i++)
+        {
+            if (SteamVR_Controller.Input(i).GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu))
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("main");
+            }
+        }
     }
 }
