@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class SingleUnit : MonoBehaviour
 {
@@ -28,7 +29,5 @@ public class SingleUnit : MonoBehaviour
         {
             TakeDamage(aCol.gameObject.GetComponent<Arrow>().myDamage);
         }
-
-        //myBloodEffect.SetActive(true);
     }
 }

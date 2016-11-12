@@ -2,6 +2,7 @@
 
 public class Shoot : MonoBehaviour
 {
+    public GameObject myUnit;
     public GameObject myProjectile;
     private GameObject myTarget;
 
@@ -18,10 +19,15 @@ public class Shoot : MonoBehaviour
 
     private bool myCanShoot;
 
+    bool myShouldLookAtTarget;
+
+    public float myRotationTimeToTarget;
+
 
     private void Start()
     {
         myCanShoot = false;
+        myShouldLookAtTarget = false;
     }
 
     private void FixedUpdate()
@@ -31,16 +37,32 @@ public class Shoot : MonoBehaviour
             myCanShoot = true;
         }
 
+        if (myShouldLookAtTarget == true)
+        {
+            LookAtTarget();
+        }
+
         myTimer += Time.deltaTime;
+    }
+
+    private void LookAtTarget()
+    {
+        Quaternion rotation = Quaternion.LookRotation(myTarget.transform.position - myUnit.transform.position);
+        myUnit.transform.rotation = Quaternion.Slerp(myUnit.transform.rotation, rotation, Time.deltaTime * myRotationTimeToTarget);
     }
 
     private void OnTriggerStay(Collider aCol)
     {
         if (myCanShoot && aCol.gameObject.tag == "Units")
         {
+            myTarget = aCol.gameObject;
+
             float force = Random.Range(myMinForce, myMaxForce);
 
-            GameObject projectile = Instantiate(myProjectile, myShootFrom.transform) as GameObject;
+            myShouldLookAtTarget = true;
+
+            GameObject projectile = Instantiate(myProjectile) as GameObject;
+            projectile.transform.position = myShootFrom.transform.position;
             Rigidbody rigidBody = projectile.GetComponent<Rigidbody>();
             rigidBody.velocity = myShootFrom.transform.forward;
             projectile.GetComponent<Rigidbody>().AddForce(rigidBody.velocity * force);
@@ -51,4 +73,9 @@ public class Shoot : MonoBehaviour
             myTimer = 0;
         }
     }
+
+    /*private void OnTriggerExit(Collider aCol)
+    {
+        //myShouldLookAtTarget = false;
+    }*/
 }
