@@ -61,13 +61,13 @@ public class Shoot : MonoBehaviour
 
             myShouldLookAtTarget = true;
 
-            GameObject projectile = Instantiate(myProjectile) as GameObject;
-            projectile.transform.position = myShootFrom.transform.position;
-            Rigidbody rigidBody = projectile.GetComponent<Rigidbody>();
-            rigidBody.velocity = myShootFrom.transform.forward;
-            projectile.GetComponent<Rigidbody>().AddForce(rigidBody.velocity * force);
+            //GameObject projectile = Instantiate(myProjectile) as GameObject;
+            //projectile.transform.position = myShootFrom.transform.position;
+            //Rigidbody rigidBody = projectile.GetComponent<Rigidbody>();
+            //rigidBody.velocity =  /*myTarget.transform.position - */ myShootFrom.transform.forward;
+            //projectile.GetComponent<Rigidbody>().AddForce(rigidBody.velocity * force);
 
-            Destroy(projectile, myLifeTime);
+            //Destroy(projectile, myLifeTime);
 
             myCanShoot = false;
             myTimer = 0;
