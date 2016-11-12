@@ -18,50 +18,30 @@ public class UnitManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
-    }
-
-    Vector3 YAxisLock (Vector3 aVector)
-    {
-        Vector3 postion = aVector;
-        postion.y = 0;
-        return postion;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (myIsMoving)
+        GameObject targetArea = GameObject.Find("Target");
+        myDestination = targetArea.transform.position;
+        myDestination.y = 0;
+        if ((myDestination - transform.position).magnitude < 1)
         {
-            if ((myDestination - transform.position).magnitude < 1)
-            {
-                myIsMoving = false;
-            }
-            else
-            {
-                
-                Vector3 direction = Vector3.Lerp(transform.position, myDestination, Time.fixedDeltaTime * myMovementSpeed);
-                direction.y = 0;
-                transform.position = direction;
-                Vector3 lookPos = myDestination - transform.position;
-                lookPos.y = 0;
-                Quaternion rotation = Quaternion.LookRotation(lookPos);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * myDamping);
-            }
+            myIsMoving = false;
         }
-        else if (!myIsMoving)
+        else
         {
-            GameObject targetArea = GameObject.Find("Target");
-            if ((myDestination - transform.position).magnitude > 1)
-            {
-                myIsMoving = true;
-            }
-            else if (myDestination != targetArea.transform.position)
-            {
-                myDestination = targetArea.transform.position;
-            }
             
+            Vector3 direction = Vector3.Lerp(transform.position, myDestination, Time.fixedDeltaTime * myMovementSpeed);
+            transform.position = direction;
+            Vector3 lookPos = myDestination - transform.position;
+            lookPos.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * myDamping);
         }
+    
     }
 }
 
