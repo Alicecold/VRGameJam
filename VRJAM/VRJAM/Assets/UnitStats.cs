@@ -11,11 +11,7 @@ public class UnitStats : MonoBehaviour
 
     void start()
     {
-        myUnitID = 1;
-        myHealth = 1;
-        mySpeed = 1;
-        myDamage = 1;
-        myIsRanged = false;
+        
     }
 
     void update()
