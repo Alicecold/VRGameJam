@@ -1,16 +1,51 @@
 fileFormatVersion: 2
-guid: 123e8cb2f5e8f464ab74d06f418b852d
-timeCreated: 1478944696
+guid: f2055e3e058dc1446a7f652a56380f62
+timeCreated: 1478946938
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Circle
-    7400000: Default Take
+    100000: group
+    100002: //RootNode
+    100004: pasted__pCube10
+    100006: pasted__pCube10 1
+    100008: pasted__pCube6
+    100010: pasted__pCube7
+    100012: pasted__pCube8
+    100014: pasted__pCube9
+    100016: pasted__transform6
+    100018: pasted__transform7
+    100020: pasted__transform8
+    100022: pasted__transform9
+    100024: pCube11
+    100026: pCube12
+    100028: pCube13
+    100030: transform10
+    100032: transform11
+    100034: transform12
+    100036: transform13
+    400000: group
+    400002: //RootNode
+    400004: pasted__pCube10
+    400006: pasted__pCube10 1
+    400008: pasted__pCube6
+    400010: pasted__pCube7
+    400012: pasted__pCube8
+    400014: pasted__pCube9
+    400016: pasted__transform6
+    400018: pasted__transform7
+    400020: pasted__transform8
+    400022: pasted__transform9
+    400024: pCube11
+    400026: pCube12
+    400028: pCube13
+    400030: transform10
+    400032: transform11
+    400034: transform12
+    400036: transform13
+    2300000: pasted__pCube10
+    3300000: pasted__pCube10
+    4300000: pasted__pCube10
     9500000: //RootNode
   materials:
     importMaterials: 1
