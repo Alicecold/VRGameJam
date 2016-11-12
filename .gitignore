@@ -29,3 +29,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 *.dwlt
+
+
+# Meta folder
+/[Ll]ibrary/metadata/**
