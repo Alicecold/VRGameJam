@@ -5,6 +5,7 @@ public class UnitManager : MonoBehaviour
 {
 
     public float myMovementSpeed;
+    public float myDamping;
     public int myUnitID;
     public int myHealth;
     public int mySpeed;
@@ -20,27 +21,46 @@ public class UnitManager : MonoBehaviour
 
     }
 
+    Vector3 YAxisLock (Vector3 aVector)
+    {
+        Vector3 postion = aVector;
+        postion.y = 0;
+        return postion;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (myIsMoving)
         {
-            if ((myDestination - transform.position).magnitude < 0.5)
+            if ((myDestination - transform.position).magnitude < 1)
             {
                 myIsMoving = false;
             }
             else
             {
-                Vector3 direction = Vector3.Lerp(transform.position, myDestination, Time.time * myMovementSpeed);
+                
+                Vector3 direction = Vector3.Lerp(transform.position, myDestination, Time.fixedDeltaTime * myMovementSpeed);
+                direction.y = 0;
                 transform.position = direction;
+                Vector3 lookPos = myDestination - transform.position;
+                lookPos.y = 0;
+                Quaternion rotation = Quaternion.LookRotation(lookPos);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * myDamping);
             }
         }
         else if (!myIsMoving)
         {
-            if ((myDestination - transform.position).magnitude > 0.5)
+            GameObject targetArea = GameObject.Find("Target");
+            if ((myDestination - transform.position).magnitude > 1)
             {
                 myIsMoving = true;
             }
+            else if (myDestination != targetArea.transform.position)
+            {
+                myDestination = targetArea.transform.position;
+            }
+            
         }
     }
 }
