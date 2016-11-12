@@ -62,10 +62,13 @@ public abstract class GripTravel : MonoBehaviour
     void Start()
     {
         _Trans = transform;
+        if (Visuals.MidLine != null)
         Visuals.MidLine.SetVertexCount(2);
 
-        Visuals.MidLine.gameObject.SetActive(false);
-        Visuals.MidPointHUD.gameObject.SetActive(false);
+        if (Visuals.MidLine != null)
+            Visuals.MidLine.gameObject.SetActive(false);
+        if (Visuals.MidPointHUD != null)
+            Visuals.MidPointHUD.gameObject.SetActive(false);
     }
 
     void Update()
@@ -145,8 +148,12 @@ public abstract class GripTravel : MonoBehaviour
                     MidHoldTrans.position = (LeftControllerTrans.position + RightControllerTrans.position) / 2;
 
                     _State.State = States.Zooming;
-                    Visuals.MidPointHUD.position = MidHoldTrans.position;
-                    Visuals.MidPointHUD.localScale = _Trans.localScale;
+
+                    if (Visuals.MidPointHUD != null)
+                    {
+                        Visuals.MidPointHUD.position = MidHoldTrans.position;
+                        Visuals.MidPointHUD.localScale = _Trans.localScale;
+                    }
                 }
                 if (_State.SuspendedCtrlTrans == LeftControllerTrans && _State.LeftHold)
                 {
@@ -216,13 +223,17 @@ public abstract class GripTravel : MonoBehaviour
         bool zooming = _State.State == States.Zooming;
         if (zooming)
         {
-            Visuals.MidLine.SetPosition(0, LeftControllerTrans.position);
-            Visuals.MidLine.SetPosition(1, RightControllerTrans.position);
+
+            if (Visuals.MidLine != null)
+            {
+                Visuals.MidLine.SetPosition(0, LeftControllerTrans.position);
+                Visuals.MidLine.SetPosition(1, RightControllerTrans.position);
+            }
         }
 
-        if (Visuals.MidLine.gameObject.activeSelf != zooming)
+        if (Visuals.MidLine != null && Visuals.MidLine.gameObject.activeSelf != zooming)
             Visuals.MidLine.gameObject.SetActive(zooming);
-        if (Visuals.MidPointHUD.gameObject.activeSelf != zooming)
+        if (Visuals.MidPointHUD != null && Visuals.MidPointHUD.gameObject.activeSelf != zooming)
             Visuals.MidPointHUD.gameObject.SetActive(zooming);
     }
     private void StartLeftGrip()
