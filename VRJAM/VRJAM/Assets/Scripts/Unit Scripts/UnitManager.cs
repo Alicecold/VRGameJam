@@ -3,31 +3,36 @@ using System.Collections;
 
 public class UnitManager : MonoBehaviour
 {
-    public GameObject myTargetArea;
+    private float myMovementSpeed;
+    private float myDamping;
+    private int myUnitID;
+    private int myHealth;
+    private int myDamage;
+    private float myAttackRange;
 
-    public float myMovementSpeed;
-    public float myDamping;
-    public int myUnitID;
-    public int myHealth;
-    public int myDamage;
-    public float myAttackRange;
+    private bool myTeam; // True = white, false = black
+    private bool myIsMoving;
+    private Vector3 myDestination;
 
-    public bool myTeam; // True = white, false = black
-    bool myIsMoving;
-    Vector3 myDestination;
-
-    // Use this for initialization
     void Start()
     {
-        
-    }
+        GroupManager InitSettings = transform.parent.gameObject.GetComponent<GroupManager>();
+        myMovementSpeed = InitSettings.myMovementSpeed;
+        myDamping = InitSettings.myDamping;
+        myUnitID = InitSettings.myUnitID;
+        myHealth = InitSettings.myHealth;
+        myDamage = InitSettings.myDamage;
+        myAttackRange = InitSettings.myAttackRange;
 
-    // Update is called once per frame
+        myTeam = InitSettings.myTeam;
+      }
+
     void Update()
     {
-        myDestination = myTargetArea.transform.position;
+        GameObject myParent = transform.parent.gameObject;
+        myDestination = myParent.transform.position;
         myDestination.y = 0;
-        if ((myDestination - transform.position).magnitude < 1)
+        if ((myDestination - transform.position).magnitude < .3)
         {
             myIsMoving = false;
         }
@@ -40,7 +45,6 @@ public class UnitManager : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * myDamping);
         }
-    
     }
 }
 
