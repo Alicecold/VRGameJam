@@ -31,7 +31,6 @@ public class UnitManager : MonoBehaviour
 
     void Update()
     {
-       
         myDestination = myTarget.transform.localToWorldMatrix.GetPosition();
         myDestination.y = 0;
         Vector3 position = transform.position;
