@@ -1,16 +1,37 @@
 fileFormatVersion: 2
-guid: 123e8cb2f5e8f464ab74d06f418b852d
-timeCreated: 1478944696
+guid: ce96c6ffaf9c76b48b471bc509a6a673
+timeCreated: 1478947010
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Circle
-    7400000: Default Take
+    100000: pCube1
+    100002: pCube2
+    100004: pCube3
+    100006: pCube4
+    100008: pCube5
+    100010: pCylinder1
+    100012: //RootNode
+    100014: transform1
+    100016: transform2
+    100018: transform3
+    100020: transform4
+    100022: transform5
+    400000: pCube1
+    400002: pCube2
+    400004: pCube3
+    400006: pCube4
+    400008: pCube5
+    400010: pCylinder1
+    400012: //RootNode
+    400014: transform1
+    400016: transform2
+    400018: transform3
+    400020: transform4
+    400022: transform5
+    2300000: pCube5
+    3300000: pCube5
+    4300000: pCube5
     9500000: //RootNode
   materials:
     importMaterials: 1
