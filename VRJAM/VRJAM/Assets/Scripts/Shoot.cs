@@ -73,4 +73,9 @@ public class Shoot : MonoBehaviour
             myTimer = 0;
         }
     }
+
+    /*private void OnTriggerExit(Collider aCol)
+    {
+        //myShouldLookAtTarget = false;
+    }*/
 }
