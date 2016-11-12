@@ -17,7 +17,7 @@ public class UnitManager : MonoBehaviour
     void Start()
     {
         GroupManager InitSettings = transform.parent.gameObject.GetComponent<GroupManager>();
-        myMovementSpeed = InitSettings.myMovementSpeed / 3;
+        myMovementSpeed = InitSettings.myMovementSpeed / 5;
         myDamping = InitSettings.myDamping;
         myUnitID = InitSettings.myUnitID;
         myHealth = InitSettings.myHealth;
