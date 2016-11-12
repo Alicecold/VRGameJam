@@ -75,7 +75,7 @@ public class Shoot : MonoBehaviour
             //Player total seconds to the point should be 3x of how long time it takes for the enemis to reach p
             //Player speed should be 3x faster
 
-            Vector3 targetToPointVector = myTargetPoint - myTarget.transform.position;
+            //Vector3 targetToPointVector = myTargetPoint - myTarget.transform.position;
             //mySpeed *= 3;
 
             myCanShoot = false;
