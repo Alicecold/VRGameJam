@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRJAM.CSharp.Plugins", "VRJAM.CSharp.Plugins.csproj", "{A58AE49D-4946-810C-52D6-8EAB39F09293}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRJAM.CSharp", "VRJAM.CSharp.csproj", "{8DD52A93-17B8-C715-BF90-0B514244C3DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRJAM.CSharp.Editor", "VRJAM.CSharp.Editor.csproj", "{B8306F5A-65AF-4CA7-9C47-021552FE62EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A58AE49D-4946-810C-52D6-8EAB39F09293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58AE49D-4946-810C-52D6-8EAB39F09293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A58AE49D-4946-810C-52D6-8EAB39F09293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A58AE49D-4946-810C-52D6-8EAB39F09293}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DD52A93-17B8-C715-BF90-0B514244C3DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DD52A93-17B8-C715-BF90-0B514244C3DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DD52A93-17B8-C715-BF90-0B514244C3DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DD52A93-17B8-C715-BF90-0B514244C3DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8306F5A-65AF-4CA7-9C47-021552FE62EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8306F5A-65AF-4CA7-9C47-021552FE62EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8306F5A-65AF-4CA7-9C47-021552FE62EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8306F5A-65AF-4CA7-9C47-021552FE62EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
