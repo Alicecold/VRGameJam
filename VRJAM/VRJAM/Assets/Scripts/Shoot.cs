@@ -69,6 +69,15 @@ public class Shoot : MonoBehaviour
 
             //Destroy(projectile, myLifeTime);
 
+
+
+            //Enemies to point = p  (should not take more than 2 seconds for the enemies to get to the point)
+            //Player total seconds to the point should be 3x of how long time it takes for the enemis to reach p
+            //Player speed should be 3x faster
+
+            Vector3 targetToPointVector = myTargetPoint - myTarget.transform.position;
+            //mySpeed *= 3;
+
             myCanShoot = false;
             myTimer = 0;
         }
