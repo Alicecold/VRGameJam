@@ -24,11 +24,7 @@ public class UnitManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ()
-        {
-
-        }
-
+        
         GameObject targetArea = GameObject.Find("Target");
         myDestination = targetArea.transform.position;
         myDestination.y = 0;
@@ -45,7 +41,6 @@ public class UnitManager : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * myDamping);
         }
-    
     }
 }
 
