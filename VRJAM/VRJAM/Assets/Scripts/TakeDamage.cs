@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class TakeDamage : MonoBehaviour
 {
@@ -7,7 +6,7 @@ public class TakeDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider aCol)
     {
-        if (aCol.gameObject.tag == "Unit")
+        if (aCol.gameObject.tag == "Units")
         {
             aCol.gameObject.GetComponent<SingleUnit>().TakeDamage(myDamage);
         }
