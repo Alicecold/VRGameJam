@@ -8,12 +8,12 @@ public class UnitManager : MonoBehaviour
     public float myDamping;
     public int myUnitID;
     public int myHealth;
-    public int mySpeed;
     public int myDamage;
-    public bool myIsRanged;
+    public float myAttackRange;
 
-    public bool myIsMoving;
-    public Vector3 myDestination;
+    public bool myTeam; // True = white, false = black
+    bool myIsMoving;
+    Vector3 myDestination;
 
     // Use this for initialization
     void Start()
@@ -24,6 +24,11 @@ public class UnitManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if ()
+        {
+
+        }
+
         GameObject targetArea = GameObject.Find("Target");
         myDestination = targetArea.transform.position;
         myDestination.y = 0;
@@ -33,7 +38,6 @@ public class UnitManager : MonoBehaviour
         }
         else
         {
-            
             Vector3 direction = Vector3.Lerp(transform.position, myDestination, Time.fixedDeltaTime * myMovementSpeed);
             transform.position = direction;
             Vector3 lookPos = myDestination - transform.position;
