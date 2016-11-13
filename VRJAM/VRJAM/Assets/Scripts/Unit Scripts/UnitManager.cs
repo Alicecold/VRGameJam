@@ -26,7 +26,7 @@ public class UnitManager : MonoBehaviour
 
     GameObject myTarget;
 
-    void SetTarget(GameObject aTarget)
+    public void SetTarget(GameObject aTarget)
     {
         myTarget = aTarget;
     }
@@ -44,7 +44,7 @@ public class UnitManager : MonoBehaviour
         myTeam = InitSettings.myTeam;
         myState = eState.NORMAL;
 
-        myTarget = InitSettings.myTarget;
+        myTarget = InitSettings.myStoneTarget;
     }
 
     void NormalState()

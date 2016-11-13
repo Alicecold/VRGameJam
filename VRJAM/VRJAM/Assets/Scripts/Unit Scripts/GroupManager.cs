@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class GroupManager : MonoBehaviour
 {
@@ -10,35 +12,97 @@ public class GroupManager : MonoBehaviour
     public int myDamage;
     public float myAttackRange;
     public float myAggroRange;
-    public GameObject myTarget;
+    public GameObject myStoneTarget;
+    public GameObject myEnemyTarget;
+    public List<GameObject> myEnemyStones;
 
     public bool myTeam; // True = white, false = black
 
     public bool myIsMoving;
     public Vector3 myDestination;
 
-    void Start ()
-    {
-	
-	}
+    private float myCurrentUpdateCooldown;
+    private const float myUpdateCooldown = 0.2f;
 
-	void Update ()
+    void Start()
     {
+        myCurrentUpdateCooldown = 0.0f;
+    }
+
+    void Update()
+    {
+        if (myEnemyTarget == null)
+        {
+            if (myCurrentUpdateCooldown < 0)
+            {
+                FindTarget();
+                if(myEnemyTarget == null)
+                {
+                    SetTargetToUnits(myStoneTarget);
+                }
+                myCurrentUpdateCooldown = myUpdateCooldown;
+            }
+            else
+            {
+                myCurrentUpdateCooldown -= Time.fixedDeltaTime;
+            }
+        }
+        else
+        {
+            UnitManager unit = myEnemyTarget.GetComponent<UnitManager>();
+            if(unit.IsDead() || (myEnemyTarget.transform.position - myStoneTarget.transform.position).magnitude < myAggroRange)
+            {
+                myEnemyTarget = null;
+                myCurrentUpdateCooldown = -1.0f;
+            }
+        }
+    }
+	
+    void FindTarget()
+    {
+        GameObject targetStone = FindClosestGroupTarget();
+        if (targetStone == null)
+        {
+            return;
+        }
+        else
+        {
+            UnitManager[] units = targetStone.GetComponentsInChildren<UnitManager>();
+
+            foreach (UnitManager unit in units)
+            {
+                if(unit.IsDead() == false)
+                {
+                    myEnemyTarget = unit.gameObject;
+                    return;
+                }
+            }
+        }
+    }
+
+    GameObject FindClosestGroupTarget()
+    {
+        GameObject selectedObject = null;
+
+        foreach (GameObject go in myEnemyStones)
+        {
+            if ((go.transform.position - transform.position).magnitude < myAggroRange)
+            {
+                selectedObject = go;
+                break;
+            }
+        }
         
-        //myDestination = myTarget.transform.position;
-        //myDestination.y = 0;
-        //if ((myDestination - transform.position).magnitude < 1)
-        //{
-        //    myIsMoving = false;
-        //}
-        //else
-        //{
-        //    Vector3 direction = Vector3.Lerp(transform.position, myDestination, Time.fixedDeltaTime * myMovementSpeed);
-        //    transform.position = direction;
-        //    Vector3 lookPos = myDestination - transform.position;
-        //    lookPos.y = 0;
-        //    Quaternion rotation = Quaternion.LookRotation(lookPos);
-        //    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * myDamping);
-        //}
+        return selectedObject;
+    }
+
+    void SetTargetToUnits(GameObject aGameObject)
+    {
+        UnitManager[] units = GetComponentsInChildren<UnitManager>();
+
+        foreach (UnitManager unit in units)
+        {
+            unit.SetTarget(aGameObject);
+        }
     }
 }
