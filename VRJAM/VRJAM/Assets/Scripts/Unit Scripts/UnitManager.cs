@@ -13,12 +13,11 @@ public class UnitManager : MonoBehaviour
     private bool myTeam; // True = white, false = black
     private bool myIsMoving;
     private Vector3 myDestination;
-    private GameObject myTarget;
 
     void Start()
     {
         GroupManager InitSettings = transform.parent.gameObject.GetComponent<GroupManager>();
-        myMovementSpeed = InitSettings.myMovementSpeed - 0.01f;
+        myMovementSpeed = InitSettings.myMovementSpeed / 5;
         myDamping = InitSettings.myDamping;
         myUnitID = InitSettings.myUnitID;
         myHealth = InitSettings.myHealth;
@@ -26,28 +25,25 @@ public class UnitManager : MonoBehaviour
         myAttackRange = InitSettings.myAttackRange;
 
         myTeam = InitSettings.myTeam;
-        myTarget = InitSettings.myTarget;
       }
 
     void Update()
     {
-        myDestination = myTarget.transform.localToWorldMatrix.GetPosition();
+        GameObject myParent = transform.parent.gameObject;
+        myDestination = myParent.transform.position;
         myDestination.y = 0;
-        Vector3 position = transform.position;
-        position.y = 0;
-
-        if ((myDestination - position).magnitude < 1.0)
+        if ((myDestination - transform.position).magnitude < 1)
         {
             myIsMoving = false;
         }
         else
         {
-            Vector3 direction = Vector3.Lerp(position, myDestination, Time.fixedDeltaTime * myMovementSpeed);
+            Vector3 direction = Vector3.MoveTowards(transform.position, myDestination, Time.fixedDeltaTime * myMovementSpeed);
             transform.position = direction;
-            Vector3 lookPos = myDestination - position;
+            Vector3 lookPos = myDestination - transform.position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * myDamping);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.deltaTime * myDamping);
         }
     }
 }
