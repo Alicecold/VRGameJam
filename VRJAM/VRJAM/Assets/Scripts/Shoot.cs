@@ -2,6 +2,8 @@
 
 public class Shoot : MonoBehaviour
 {
+    public string myAttackEnemyTag;
+
     public GameObject myUnit;
     public GameObject myProjectile;
 
@@ -52,7 +54,7 @@ public class Shoot : MonoBehaviour
 
     private void OnTriggerStay(Collider aCol)
     {
-        if (myCanShoot && aCol.gameObject.tag == "Units")
+        if (myCanShoot && aCol.gameObject.tag == myAttackEnemyTag)
         {
             myShouldLookAtTarget = true;
 
