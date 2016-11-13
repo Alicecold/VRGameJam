@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum eState
+{
+    NORMAL,
+    ATTACK,
+    DEAD
+}
+
 public class UnitManager : MonoBehaviour
 {
     public GameObject myFuturePoint;
@@ -15,6 +22,14 @@ public class UnitManager : MonoBehaviour
     private bool myTeam; // True = white, false = black
     private bool myIsMoving;
     private Vector3 myDestination;
+    private eState myState;
+
+    GameObject myTarget;
+
+    void SetTarget(GameObject aTarget)
+    {
+        myTarget = aTarget;
+    }
 
     void Start()
     {
@@ -27,25 +42,103 @@ public class UnitManager : MonoBehaviour
         myAttackRange = InitSettings.myAttackRange;
 
         myTeam = InitSettings.myTeam;
-      }
+        myState = eState.NORMAL;
 
-    void Update()
+        myTarget = InitSettings.myTarget;
+    }
+
+    void NormalState()
     {
-        GameObject myParent = transform.parent.gameObject;
-        myDestination = myParent.transform.position;
-        myDestination.y = 0;
-        if ((myDestination - transform.position).magnitude < 1)
+        MoveToDestination();
+    }
+
+    void AttackState()
+    {
+        if (MoveToDestination())
         {
-            myIsMoving = false;
+            Attack();
+        }
+    }
+    void DeadState()
+    {
+
+    }
+
+    void Attack()
+    {
+        if (myTarget != null)
+        {
+            UnitManager enemyUnit = myTarget.GetComponent<UnitManager>();
+
+            if(enemyUnit != null && !enemyUnit.IsDead())
+            {
+                enemyUnit.TakeDamage(myDamage);
+            }
+        }
+    }
+
+    public void TakeDamage(int someDamage)
+    {
+        if (!IsDead())
+        {
+            myHealth -= someDamage;
+            if (myHealth < 0)
+            {
+                myState = eState.DEAD;
+            }
+        }
+    }
+    public bool IsDead()
+    {
+        if (myState == eState.DEAD)
+        {
+            return true;
         }
         else
         {
-            Vector3 direction = Vector3.MoveTowards(transform.position, myDestination, Time.fixedDeltaTime * myMovementSpeed);
+            return false;
+        }
+    }
+
+    void Update()
+    {
+        switch (myState)
+        {
+            case eState.NORMAL:
+                NormalState();
+                break;
+            case eState.ATTACK:
+                AttackState();
+                break;
+            case eState.DEAD:
+                DeadState();
+                break;
+            default:
+                break;
+        }
+    }
+
+    //Returns true if destination reached
+    bool MoveToDestination()
+    {    
+        myDestination = myTarget.transform.position;
+        myDestination.y = 0;
+        Vector3 position = transform.position;
+        position.y = 0;
+        if ((myDestination - position).magnitude < 2)
+        {
+            myIsMoving = false;
+            return true;
+        }
+        else
+        {
+            Vector3 direction = Vector3.MoveTowards(position, myDestination, Time.fixedDeltaTime * myMovementSpeed);
             transform.position = direction;
-            Vector3 lookPos = myDestination - transform.position;
+            Vector3 lookPos = myDestination - position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.deltaTime * myDamping);
+            return false;
         }
     }
 }
