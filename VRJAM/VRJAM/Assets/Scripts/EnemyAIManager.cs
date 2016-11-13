@@ -8,6 +8,7 @@ public class EnemyAIManager : MonoBehaviour {
     public GameObject myArcherTarget;
     Vector3 myPawnPosition;
     Vector3 myKnightPosition;
+    Vector3 myArcherPosition
     public float myCountDown;
 
 	// Use this for initialization
@@ -24,6 +25,8 @@ public class EnemyAIManager : MonoBehaviour {
             myPawnTarget.transform.position = myPawnPosition;
             myKnightPosition = new Vector3(Random.Range(-20.0f, 20.0f), 0, Random.Range(-20.0f, 20.0f));
             myKnightTarget.transform.position = myKnightPosition;
+            myArcherPosition = new Vector3(Random.Range(-20.0f, 20.0f), 0, Random.Range(-20.0f, 20.0f));
+            myArcherTarget.transform.position = myKnightPosition;
             myCountDown = 15f;
         }
 	}
