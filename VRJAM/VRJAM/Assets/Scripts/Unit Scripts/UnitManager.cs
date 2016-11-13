@@ -151,6 +151,10 @@ public class UnitManager : MonoBehaviour
     //Returns true if destination reached
     bool MoveToDestination()
     {
+        if(myTarget == null)
+        {
+            return false;
+        }
         myDestination = myTarget.transform.position;
         myDestination.y = 0;
         Vector3 position = transform.position;
