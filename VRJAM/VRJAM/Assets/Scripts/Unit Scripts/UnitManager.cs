@@ -23,9 +23,15 @@ public class UnitManager : MonoBehaviour
     private bool myIsMoving;
     private Vector3 myDestination;
     private eState myState;
+    private float myAttackCooldown;
+    private float myCurrentCooldown;
 
     GameObject myTarget;
 
+    public void SetState(eState aState)
+    {
+        myState = aState;
+    }
     public void SetTarget(GameObject aTarget)
     {
         myTarget = aTarget;
@@ -40,6 +46,8 @@ public class UnitManager : MonoBehaviour
         myHealth = InitSettings.myHealth;
         myDamage = InitSettings.myDamage;
         myAttackRange = InitSettings.myAttackRange;
+        myAttackCooldown = InitSettings.myAttackCooldown;
+        myCurrentCooldown = myAttackCooldown;
 
         myTeam = InitSettings.myTeam;
         myState = eState.NORMAL;
@@ -66,14 +74,22 @@ public class UnitManager : MonoBehaviour
 
     void Attack()
     {
-        if (myTarget != null)
+        if (myCurrentCooldown <= 0)
         {
-            UnitManager enemyUnit = myTarget.GetComponent<UnitManager>();
-
-            if(enemyUnit != null && !enemyUnit.IsDead())
+            if (myTarget != null)
             {
-                enemyUnit.TakeDamage(myDamage);
+                UnitManager enemyUnit = myTarget.GetComponent<UnitManager>();
+
+                if (enemyUnit != null && !enemyUnit.IsDead())
+                {
+                    enemyUnit.TakeDamage(myDamage);
+                    myCurrentCooldown = myAttackCooldown;
+                }
             }
+        }
+        else
+        {
+            myCurrentCooldown -= Time.deltaTime;
         }
     }
 
@@ -120,7 +136,7 @@ public class UnitManager : MonoBehaviour
 
     //Returns true if destination reached
     bool MoveToDestination()
-    {    
+    {
         myDestination = myTarget.transform.position;
         myDestination.y = 0;
         Vector3 position = transform.position;
