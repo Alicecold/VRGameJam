@@ -3,6 +3,8 @@ using System.Collections;
 
 public class UnitManager : MonoBehaviour
 {
+    public GameObject myFuturePoint;
+
     private float myMovementSpeed;
     private float myDamping;
     private int myUnitID;

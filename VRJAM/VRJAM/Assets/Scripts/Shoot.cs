@@ -57,17 +57,17 @@ public class Shoot : MonoBehaviour
         {
             myTarget = aCol.gameObject;
 
-            float force = Random.Range(myMinForce, myMaxForce);
+            float force = 350; //Random.Range(myMinForce, myMaxForce);
 
             myShouldLookAtTarget = true;
 
-            //GameObject projectile = Instantiate(myProjectile) as GameObject;
-            //projectile.transform.position = myShootFrom.transform.position;
-            //Rigidbody rigidBody = projectile.GetComponent<Rigidbody>();
-            //rigidBody.velocity =  /*myTarget.transform.position - */ myShootFrom.transform.forward;
-            //projectile.GetComponent<Rigidbody>().AddForce(rigidBody.velocity * force);
+            GameObject projectile = Instantiate(myProjectile) as GameObject;
+            projectile.transform.position = myShootFrom.transform.position;
+            Rigidbody rigidBody = projectile.GetComponent<Rigidbody>();
+            rigidBody.velocity =  /*myTarget.transform.position - */ myShootFrom.transform.forward;
+            projectile.GetComponent<Rigidbody>().AddForce(rigidBody.velocity * force);
 
-            //Destroy(projectile, myLifeTime);
+            Destroy(projectile, myLifeTime);
 
 
 
@@ -79,7 +79,14 @@ public class Shoot : MonoBehaviour
             //Vector3 meToTargetToPointVector = .....;  //HYPOTINUSAN
             //mySpeed *= 3;
             //skjut mot meToTargetToPointVector
-            //om man collidar 
+            //om man collidar
+
+
+            //Vector3 shootTo = myTarget.GetComponent<UnitManager>().myFuturePoint.transform.position; // -  this.gameObject.transform.position;
+            //Debug.DrawLine(this.transform.position, shootTo);
+
+            /*myShootSpeed = 3 * myTarget.GetComponent<Unit>().mySpeed;
+            myProjectile.myShootTo =*/
 
             myCanShoot = false;
             myTimer = 0;
