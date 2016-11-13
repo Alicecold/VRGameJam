@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public class GroupManager : MonoBehaviour
 {
     public float myMovementSpeed;
-    public float myDamping;
     public int myUnitID;
     public int myHealth;
     public int myDamage;

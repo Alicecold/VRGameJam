@@ -43,7 +43,6 @@ public class UnitManager : MonoBehaviour
     {
         GroupManager InitSettings = transform.parent.gameObject.GetComponent<GroupManager>();
         myMovementSpeed = InitSettings.myMovementSpeed / 5;
-        myDamping = InitSettings.myDamping;
         myUnitID = InitSettings.myUnitID;
         myHealth = InitSettings.myHealth;
         myDamage = InitSettings.myDamage;
@@ -168,10 +167,7 @@ public class UnitManager : MonoBehaviour
         {
             Vector3 direction = Vector3.MoveTowards(position, myDestination, Time.fixedDeltaTime * myMovementSpeed);
             transform.position = direction;
-            Vector3 lookPos = myDestination - position;
-            lookPos.y = 0;
-            Quaternion rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, Time.deltaTime * myDamping);
+            transform.LookAt(myDestination);
             return false;
         }
     }
