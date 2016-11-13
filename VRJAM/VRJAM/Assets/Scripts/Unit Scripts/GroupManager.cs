@@ -62,6 +62,12 @@ public class GroupManager : MonoBehaviour
                 myCurrentUpdateCooldown = -1.0f;
             }
         }
+
+        UnitManager[] units = GetComponentsInChildren<UnitManager>();
+        if(units.Length == 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 	
     void FindTarget()
@@ -90,9 +96,27 @@ public class GroupManager : MonoBehaviour
     {
         GameObject selectedObject = null;
 
+        Vector3 position = myStoneTarget.transform.position;
+        position.y = 0;
+
+        for (int i = myEnemyStones.Count - 1; i < 0; i--)
+        {
+            if(myEnemyStones[i] == null)
+            {
+                myEnemyStones.RemoveAt(i);
+            }
+        }
+
         foreach (GameObject go in myEnemyStones)
         {
-            if ((go.transform.position - transform.position).magnitude < myAggroRange)
+            if(go == null)
+            {
+                break;
+            }
+            Vector3 goPosition = go.transform.position;
+            goPosition.y = 0;
+
+            if ((goPosition - position).magnitude < myAggroRange)
             {
                 selectedObject = go;
                 break;
