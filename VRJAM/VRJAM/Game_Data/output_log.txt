@@ -1,0 +1,100 @@
+Initialize engine version: 5.4.2f2 (b7e030c65c9b)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 950 (ID=0x1402)
+    Vendor:   NVIDIA
+    VRAM:     2016 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\utbildning\Desktop\newjam\VRGameJam\VRJAM\VRJAM\Game_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\utbildning\Desktop\newjam\VRGameJam\VRJAM\VRJAM\Game_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\utbildning\Desktop\newjam\VRGameJam\VRJAM\VRJAM\Game_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\utbildning\Desktop\newjam\VRGameJam\VRJAM\VRJAM\Game_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\utbildning\Desktop\newjam\VRGameJam\VRJAM\VRJAM\Game_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\utbildning\Desktop\newjam\VRGameJam\VRJAM\VRJAM\Game_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\utbildning\Desktop\newjam\VRGameJam\VRJAM\VRJAM\Game_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\utbildning\Desktop\newjam\VRGameJam\VRJAM\VRJAM\Game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\utbildning\Desktop\newjam\VRGameJam\VRJAM\VRJAM\Game_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\utbildning\Desktop\newjam\VRGameJam\VRJAM\VRJAM\Game_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.051 seconds
+Platform assembly: C:\Users\utbildning\Desktop\newjam\VRGameJam\VRJAM\VRJAM\Game_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\utbildning\Desktop\newjam\VRGameJam\VRJAM\VRJAM\Game_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initialized touch support.
+OpenVR initialized!
+ 
+(Filename:  Line: 353)
+
+UnloadTime: 0.808382 ms
+Connected to lighthouse:LHR-7A3218E2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 4ed8 -> priority: 1 
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.919831 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 2601.
+Total: 0.481165 ms (FindLiveObjects: 0.154854 ms CreateObjectMapping: 0.032902 ms MarkObjects: 0.275296 ms  DeleteObjects: 0.017507 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.312187 ms
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 2625.
+Total: 0.449771 ms (FindLiveObjects: 0.143987 ms CreateObjectMapping: 0.023545 ms MarkObjects: 0.265335 ms  DeleteObjects: 0.015998 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.469456 ms
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 2649.
+Total: 0.452488 ms (FindLiveObjects: 0.115612 ms CreateObjectMapping: 0.027167 ms MarkObjects: 0.293710 ms  DeleteObjects: 0.015394 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.661137 ms
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 2673.
+Total: 0.471505 ms (FindLiveObjects: 0.153646 ms CreateObjectMapping: 0.033204 ms MarkObjects: 0.268655 ms  DeleteObjects: 0.014791 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.063819 ms
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 2697.
+Total: 0.457318 ms (FindLiveObjects: 0.144289 ms CreateObjectMapping: 0.025054 ms MarkObjects: 0.273183 ms  DeleteObjects: 0.014187 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.338146 ms
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 2721.
+Total: 0.477241 ms (FindLiveObjects: 0.142779 ms CreateObjectMapping: 0.025054 ms MarkObjects: 0.293106 ms  DeleteObjects: 0.015394 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.642724 ms
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 2745.
+Total: 0.472109 ms (FindLiveObjects: 0.113801 ms CreateObjectMapping: 0.025658 ms MarkObjects: 0.316953 ms  DeleteObjects: 0.015093 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.451042 ms
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 2769.
+Total: 0.530368 ms (FindLiveObjects: 0.152741 ms CreateObjectMapping: 0.026261 ms MarkObjects: 0.334461 ms  DeleteObjects: 0.015998 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.284717 ms
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 2793.
+Total: 0.550593 ms (FindLiveObjects: 0.155458 ms CreateObjectMapping: 0.026563 ms MarkObjects: 0.344120 ms  DeleteObjects: 0.023545 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.372860 ms
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 2817.
+Total: 0.812608 ms (FindLiveObjects: 0.134026 ms CreateObjectMapping: 0.088746 ms MarkObjects: 0.572930 ms  DeleteObjects: 0.016602 ms)
+
+OpenVR Shutdown
+ 
+(Filename:  Line: 707)
+
