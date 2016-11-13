@@ -98,9 +98,10 @@ public class UnitManager : MonoBehaviour
         if (!IsDead())
         {
             myHealth -= someDamage;
-            if (myHealth < 0)
+            if (myHealth <= 0)
             {
                 myState = eState.DEAD;
+                Destroy(this.gameObject);
             }
         }
     }
@@ -131,6 +132,14 @@ public class UnitManager : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    private void OnTriggerEnter(Collider aCol)
+    {
+        if (aCol.gameObject.tag == "Arrow")
+        {
+            TakeDamage(aCol.gameObject.GetComponent<Arrow>().myDamage);
         }
     }
 
