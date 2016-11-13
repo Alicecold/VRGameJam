@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GroupManager : MonoBehaviour {
-
+public class GroupManager : MonoBehaviour
+{
     public float myMovementSpeed;
     public float myDamping;
     public int myUnitID;
@@ -20,7 +20,6 @@ public class GroupManager : MonoBehaviour {
     {
 	
 	}
-	
 
 	void Update ()
     {
