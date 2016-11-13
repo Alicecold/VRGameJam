@@ -21,13 +21,17 @@ public class EnemyAIManager : MonoBehaviour {
         myCountDown -= Time.deltaTime;
         if (myCountDown <= 10)
         {
-            myPawnPosition = new Vector3(Random.Range(-20.0f, 20.0f), 0, Random.Range(-20.0f, 20.0f));
-            myPawnTarget.transform.position = myPawnPosition;
-            myKnightPosition = new Vector3(Random.Range(-20.0f, 20.0f), 0, Random.Range(-20.0f, 20.0f));
-            myKnightTarget.transform.position = myKnightPosition;
-            myArcherPosition = new Vector3(Random.Range(-20.0f, 20.0f), 0, Random.Range(-20.0f, 20.0f));
-            myArcherTarget.transform.position = myKnightPosition;
-            myCountDown = 15f;
+            myPawnTarget.GetComponent<Rigidbody>().AddForce(transform.forward * 4000.0f);
+            myKnightTarget.GetComponent<Rigidbody>().AddForce(transform.forward * 4000.0f);
+            myArcherTarget.GetComponent<Rigidbody>().AddForce(transform.forward * 4000.0f);
+
+            //myPawnPosition = new Vector3(Random.Range(-20.0f, 20.0f), 0, Random.Range(-20.0f, 20.0f));
+            //myPawnTarget.transform.position = myPawnPosition;
+            // myKnightPosition = new Vector3(Random.Range(-20.0f, 20.0f), 0, Random.Range(-20.0f, 20.0f));
+            //myKnightTarget.transform.position = myKnightPosition;
+            //myArcherPosition = new Vector3(Random.Range(-20.0f, 20.0f), 0, Random.Range(-20.0f, 20.0f));
+            //myArcherTarget.transform.position = myKnightPosition;
+            myCountDown = 11f;
         }
 	}
 }
