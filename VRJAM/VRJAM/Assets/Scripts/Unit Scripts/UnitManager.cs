@@ -25,10 +25,16 @@ public class UnitManager : MonoBehaviour
     private bool myIsMoving;
     private Vector3 myDestination;
     private eState myState;
+    private float myAttackCooldown;
+    private float myCurrentCooldown;
 
     GameObject myTarget;
 
-    void SetTarget(GameObject aTarget)
+    public void SetState(eState aState)
+    {
+        myState = aState;
+    }
+    public void SetTarget(GameObject aTarget)
     {
         myTarget = aTarget;
     }
@@ -43,11 +49,13 @@ public class UnitManager : MonoBehaviour
         myHealth = InitSettings.myHealth;
         myDamage = InitSettings.myDamage;
         myAttackRange = InitSettings.myAttackRange;
+        myAttackCooldown = InitSettings.myAttackCooldown;
+        myCurrentCooldown = myAttackCooldown;
 
         myTeam = InitSettings.myTeam;
         myState = eState.NORMAL;
 
-        myTarget = InitSettings.myTarget;
+        myTarget = InitSettings.myStoneTarget;
     }
 
     void NormalState()
@@ -69,14 +77,22 @@ public class UnitManager : MonoBehaviour
 
     void Attack()
     {
-        if (myTarget != null)
+        if (myCurrentCooldown <= 0)
         {
-            UnitManager enemyUnit = myTarget.GetComponent<UnitManager>();
-
-            if(enemyUnit != null && !enemyUnit.IsDead())
+            if (myTarget != null)
             {
-                enemyUnit.TakeDamage(myDamage);
+                UnitManager enemyUnit = myTarget.GetComponent<UnitManager>();
+
+                if (enemyUnit != null && !enemyUnit.IsDead())
+                {
+                    enemyUnit.TakeDamage(myDamage);
+                    myCurrentCooldown = myAttackCooldown;
+                }
             }
+        }
+        else
+        {
+            myCurrentCooldown -= Time.deltaTime;
         }
     }
 
@@ -86,9 +102,10 @@ public class UnitManager : MonoBehaviour
         if (!IsDead())
         {
             myHealth -= someDamage;
-            if (myHealth < 0)
+            if (myHealth <= 0)
             {
                 myState = eState.DEAD;
+                Destroy(this.gameObject);
             }
         }
     }
@@ -123,9 +140,17 @@ public class UnitManager : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider aCol)
+    {
+        if (aCol.gameObject.tag == "Arrow")
+        {
+            TakeDamage(aCol.gameObject.GetComponent<Arrow>().myDamage);
+        }
+    }
+
     //Returns true if destination reached
     bool MoveToDestination()
-    {    
+    {
         myDestination = myTarget.transform.position;
         myDestination.y = 0;
         Vector3 position = transform.position;
