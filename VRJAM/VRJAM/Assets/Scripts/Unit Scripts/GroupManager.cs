@@ -40,6 +40,10 @@ public class GroupManager : MonoBehaviour
                 {
                     SetTargetToUnits(myStoneTarget);
                 }
+                else
+                {
+                    SetTargetToUnits(myEnemyTarget);
+                }
                 myCurrentUpdateCooldown = myUpdateCooldown;
             }
             else
@@ -67,11 +71,11 @@ public class GroupManager : MonoBehaviour
         }
         else
         {
-            UnitManager[] units = targetStone.GetComponentsInChildren<UnitManager>();
+            UnitManager[] units = targetStone.transform.parent.GetComponentsInChildren<UnitManager>();
 
             foreach (UnitManager unit in units)
             {
-                if(unit.IsDead() == false)
+                if(unit != null && unit.IsDead() == false)
                 {
                     myEnemyTarget = unit.gameObject;
                     return;
