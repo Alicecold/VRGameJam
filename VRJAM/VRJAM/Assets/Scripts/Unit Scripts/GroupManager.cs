@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public class GroupManager : MonoBehaviour
 {
-
     public float myMovementSpeed;
     public float myDamping;
     public int myUnitID;
@@ -58,7 +57,7 @@ public class GroupManager : MonoBehaviour
             }
         }
     }
-
+	
     void FindTarget()
     {
         GameObject targetStone = FindClosestGroupTarget();
