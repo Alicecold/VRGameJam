@@ -12,6 +12,9 @@ public class GroupManager : MonoBehaviour
     public int myDamage;
     public float myAttackRange;
     public float myAggroRange;
+
+    public float myAttackCooldown;
+
     public GameObject myStoneTarget;
     public GameObject myEnemyTarget;
     public List<GameObject> myEnemyStones;
@@ -38,13 +41,17 @@ public class GroupManager : MonoBehaviour
                 FindTarget();
                 if(myEnemyTarget == null)
                 {
-                    SetTargetToUnits(myStoneTarget);
+                    SetTargetToUnits(myStoneTarget, eState.NORMAL);
+                }
+                else
+                {
+                    SetTargetToUnits(myEnemyTarget, eState.ATTACK);
                 }
                 myCurrentUpdateCooldown = myUpdateCooldown;
             }
             else
             {
-                myCurrentUpdateCooldown -= Time.fixedDeltaTime;
+                myCurrentUpdateCooldown -= Time.deltaTime;
             }
         }
         else
@@ -67,11 +74,11 @@ public class GroupManager : MonoBehaviour
         }
         else
         {
-            UnitManager[] units = targetStone.GetComponentsInChildren<UnitManager>();
+            UnitManager[] units = targetStone.transform.parent.GetComponentsInChildren<UnitManager>();
 
             foreach (UnitManager unit in units)
             {
-                if(unit.IsDead() == false)
+                if(unit != null && unit.IsDead() == false)
                 {
                     myEnemyTarget = unit.gameObject;
                     return;
@@ -96,13 +103,14 @@ public class GroupManager : MonoBehaviour
         return selectedObject;
     }
 
-    void SetTargetToUnits(GameObject aGameObject)
+    void SetTargetToUnits(GameObject aGameObject, eState aState)
     {
         UnitManager[] units = GetComponentsInChildren<UnitManager>();
 
         foreach (UnitManager unit in units)
         {
             unit.SetTarget(aGameObject);
+            unit.SetState(aState);
         }
     }
 }
