@@ -19,6 +19,8 @@ public class UnitManager : MonoBehaviour
     private int myDamage;
     private float myAttackRange;
 
+    private ParticleSystem myParticles;
+
     private bool myTeam; // True = white, false = black
     private bool myIsMoving;
     private Vector3 myDestination;
@@ -33,6 +35,7 @@ public class UnitManager : MonoBehaviour
 
     void Start()
     {
+        myParticles = GetComponent<ParticleSystem>();
         GroupManager InitSettings = transform.parent.gameObject.GetComponent<GroupManager>();
         myMovementSpeed = InitSettings.myMovementSpeed / 5;
         myDamping = InitSettings.myDamping;
@@ -77,6 +80,7 @@ public class UnitManager : MonoBehaviour
         }
     }
 
+
     public void TakeDamage(int someDamage)
     {
         if (!IsDead())
@@ -111,6 +115,7 @@ public class UnitManager : MonoBehaviour
                 AttackState();
                 break;
             case eState.DEAD:
+                myParticles.Play();
                 DeadState();
                 break;
             default:
