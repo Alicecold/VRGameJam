@@ -125,7 +125,7 @@ public class UnitManager : MonoBehaviour
         myDestination.y = 0;
         Vector3 position = transform.position;
         position.y = 0;
-        if ((myDestination - position).magnitude < 1)
+        if ((myDestination - position).magnitude < 2)
         {
             myIsMoving = false;
             return true;
