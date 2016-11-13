@@ -19,7 +19,7 @@ public class UnitManager : MonoBehaviour
     private int myDamage;
     private float myAttackRange;
 
-    private ParticleSystem myParticles;
+    public AudioClip myDeathSound;
 
     private bool myTeam; // True = white, false = black
     private bool myIsMoving;
@@ -41,7 +41,6 @@ public class UnitManager : MonoBehaviour
 
     void Start()
     {
-        myParticles = GetComponent<ParticleSystem>();
         GroupManager InitSettings = transform.parent.gameObject.GetComponent<GroupManager>();
         myMovementSpeed = InitSettings.myMovementSpeed / 5;
         myDamping = InitSettings.myDamping;
@@ -72,7 +71,7 @@ public class UnitManager : MonoBehaviour
     }
     void DeadState()
     {
-
+        
     }
 
     void Attack()
@@ -104,8 +103,9 @@ public class UnitManager : MonoBehaviour
             myHealth -= someDamage;
             if (myHealth <= 0)
             {
-                myState = eState.DEAD;
                 Destroy(this.gameObject);
+                AudioSource.PlayClipAtPoint(myDeathSound, transform.position);
+                myState = eState.DEAD;
             }
         }
     }
@@ -132,7 +132,7 @@ public class UnitManager : MonoBehaviour
                 AttackState();
                 break;
             case eState.DEAD:
-                myParticles.Play();
+                
                 DeadState();
                 break;
             default:
