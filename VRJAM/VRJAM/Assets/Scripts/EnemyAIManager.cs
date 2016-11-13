@@ -5,6 +5,7 @@ public class EnemyAIManager : MonoBehaviour {
 
     public GameObject myPawnTarget;
     public GameObject myKnightTarget;
+    public GameObject myArcherTarget;
     Vector3 myPawnPosition;
     Vector3 myKnightPosition;
     public float myCountDown;
